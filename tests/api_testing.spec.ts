@@ -5,7 +5,7 @@ import { url } from 'inspector';
 
 test.describe("icanhazdadjoke.com tests", () => {
     test('Get a random dad joke', async ({ request }) => {
-        const dadJoke = await request.get('');
+        const dadJoke = await request.get(``);
         
         // Test for OK status
         expect(dadJoke).toBeOK();
@@ -21,13 +21,13 @@ test.describe("icanhazdadjoke.com tests", () => {
     test('Get a specific dad joke', async({ request }) => {
         // This test gets the joke with ID = usrcaMuszd
         // Joke: What's the worst thing about ancient history class? The teachers tend to Babylon.
-        const specificJoke = await request.get('/j/usrcaMuszd');
+        const specificJoke = await request.get(`/j/usrcaMuszd`);
         const json = await specificJoke.json();
         expect(json.joke).toBe('What\'s the worst thing about ancient history class? The teachers tend to Babylon.');
     });
     
     test('Search for a computer dad joke', async({ request }) => {
-        const computerJoke = await request.get('/search?term=computer');
+        const computerJoke = await request.get(`/search?term=computer`);
         expect(computerJoke).toBeOK();
         const body = await computerJoke.json();
         console.log(body);
